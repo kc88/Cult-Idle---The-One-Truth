@@ -20,7 +20,6 @@ var suspicionBar : Transform;
 var suspicionColor : GameObject;
 
 
-
 function Start()
 {
 	convSliderVal = 33.33;
@@ -73,7 +72,7 @@ function OnGUI()
 				disSliderNew = disSliderVal;
 			}
 		disSliderVal = GUILayout.HorizontalSlider(disSliderVal,1,100);
-				if (disSliderNew != disSliderVal)
+		if (disSliderNew != disSliderVal)
 			{
 				disSliderNew = disSliderVal;
 				cashSliderVal = (cashSliderNew/(cashSliderNew + convSliderNew))*(100 - disSliderNew);
@@ -89,16 +88,28 @@ function OnGUI()
 		
 		suspicionBar.localScale = Vector3(mCon.percentSuspicion,1,1);
 
+		//this if block changes suspicion bar color based on suspicion level, and sets retention rate
 		if (mCon.percentSuspicion >= 0 && mCon.percentSuspicion < 0.2)
+		{		
 			suspicionColor.renderer.material.color = Color.green;
+			mCon.percentRetention = 0.5; //needs variable, will change based on upgrades
+		}
+
 		else if (mCon.percentSuspicion >= 0.2 && mCon.percentSuspicion < 0.6)
+		{
 			suspicionColor.renderer.material.color = Color.yellow;
+			mCon.percentRetention = 0.4;
+		}
 		else 
+		{
 			suspicionColor.renderer.material.color = Color.red;
+			mCon.percentRetention = 0.25;
+		}
 		/* unused gui area
 		GUILayout.BeginArea(Rect(250,100,400,400));
 			
 		GUILayout.EndArea();
 		*/
+	
 	 
 }

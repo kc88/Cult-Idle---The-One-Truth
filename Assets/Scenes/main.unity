@@ -86,6 +86,7 @@ GameObject:
   - 114: {fileID: 4240039}
   - 114: {fileID: 4240040}
   - 114: {fileID: 4240041}
+  - 114: {fileID: 4240042}
   m_Layer: 0
   m_Name: GUIObject
   m_TagString: Untagged
@@ -108,7 +109,8 @@ MonoBehaviour:
   convSliderNew: 0
   cashSliderNew: 0
   disSliderNew: 0
-  suspicionBar: {fileID: 112865448}
+  suspicionBar: {fileID: 112865449}
+  suspicionColor: {fileID: 27653677}
 --- !u!4 &4240038
 Transform:
   m_ObjectHideFlags: 0
@@ -132,18 +134,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e274cbb4998c8ab41bfc590267d6d21a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numFollowers: 1
-  numFollowersI: 0
-  numFollowersC: 0
+  numFollowers: 0
+  numFollowersOld: 0
   numCash: 0
   numMagicka: 0
   numConvertPerSecond: 0
   percentConvert: 0
-  percentRetain: 0
+  percentRetention: 0
   percentIncome: 0
   percentFollowerConvert: 0
+  percentSuspicion: 0
   followerSalary: 0
-  cashtimer: 2
 --- !u!114 &4240040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,6 +177,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mCon: {fileID: 4240039}
   cGUI: {fileID: 4240037}
+  cashTimer: 1
+  authorityTimer: .200000003
+--- !u!114 &4240042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 4240036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5a682c576034e4499a83ef158296a36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &27653677
 GameObject:
   m_ObjectHideFlags: 0

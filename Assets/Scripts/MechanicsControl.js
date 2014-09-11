@@ -1,14 +1,13 @@
 ﻿#pragma strict
 
 var numFollowers : int; // number of followers successfully converted
-var numFollowersI : int; // number idle followers
-var numFollowersC : int; // number followers working on conversions
+var numFollowersOld : int; //used to check if number of followers changed
 var numCash : float; // current cash held
 var numMagicka : int; // current magicka possessed
 var numConvertPerSecond : float; //number of automatic conversion attempts per second
 
 var percentConvert : float; //convert success percentage
-var percentRetain : float; //convert retain percentage
+var percentRetention : float; //convert retention percentage
 var percentIncome : float; //follower income percentage
 var percentFollowerConvert : float; //follower convert success percentage, needs implementation
 
@@ -37,11 +36,15 @@ function Start () {
 	percentFollowerConvert = 0.1;
 	numConvertPerSecond = 0.1;
 	followerSalary = 1;
+	percentRetention = 0.5;
 }
 
 function Update () {
 
-	
+	if (numFollowersOld != numFollowers)
+		RetentionCheck();
+
+	numFollowersOld = numFollowers;
 }
 
 function ConversionAttempt () { //checks successfull conversion (follower gain) using convert rate and random number gen
@@ -50,6 +53,7 @@ function ConversionAttempt () { //checks successfull conversion (follower gain) 
 		numFollowers ++;
 		
 	}
+	percentSuspicion = percentSuspicion + 0.01;
 }
 function FollowConversionAttempt(){ //same as ConversionAttempt, but called automatically based on number of followers
 	if (percentFollowerConvert > Random.value)
@@ -71,4 +75,8 @@ function AddSuspicion(pC:float,pD:float){ //will be used to add to suspicion per
 		{
 			percentSuspicion = 1;
 		}
+}
+function RetentionCheck(){
+
+
 }
